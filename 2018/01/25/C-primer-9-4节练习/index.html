@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="（二）将序列图进行体绘制显示"/>
+  <meta property="og:title" content="C++ primer 9.4节练习"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">（二）将序列图进行体绘制显示</p>
+          <p class="title">C++ primer 9.4节练习</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,14 +115,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-01-16</span>
+            <span class="date">2018-01-25</span>
             <span class="time">17:24:07</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/毕业设计-三维显示/">毕业设计:三维显示</a>
+<a href="/categories/C-primer/">C++ primer</a>
 </span>
           
         </div>
@@ -131,16 +131,29 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/VTK/">#VTK</a> <a class="tag" href="/tags/MFC/">#MFC</a>
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h1 id="将序列图进行体绘制"><a href="#将序列图进行体绘制" class="headerlink" title="将序列图进行体绘制"></a>将序列图进行体绘制</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>使用vtk中BMPreader直接读入序列图，构成一个数据体，之后直接用体绘制算法，这里我们使用光线投射算法进行显示。这个思路是我在刚接触VTK时候，直接按照<a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">&lt;<vtk图形图像进阶>&gt;</vtk图形图像进阶></a>的读取序列图例子来做的，在这个过程中卡在调整颜色传递函数和透明度传递函数卡了很久。并且发现按这种方式只能读入8位的BMP序列图进行体绘制显示，读入24位的显示是错误的，相当于将这个24位的图片分开成3份来显示。之后发现是元组默认是单元组。这是用这个方法进行显示得到的三维图像。</li>
-</ol>
+          <h2 id="9-38-vector的增长"><a href="#9-38-vector的增长" class="headerlink" title="9.38 vector的增长"></a>9.38 vector的增长</h2><pre><code>//*******************9.4节练习*********************
+//*******************9.38 vector的增长*************************
+vector&lt;int&gt; ivec;
+int s, c;
+
+
+for (int i = 0; i &lt; 15; i++)
+{
+    for (s = ivec.size(), c = ivec.capacity(); s &lt;= c; s++)
+        ivec.push_back(1);
+    cout &lt;&lt; &quot;分配的内存空间： &quot; &lt;&lt; ivec.capacity() &lt;&lt; &quot; 元素个数： &quot; &lt;&lt; ivec.size() &lt;&lt; endl;
+}
+
+std::system(&quot;pause&quot;);
+return 0;  
+</code></pre><p><img src="https://i.imgur.com/twOrehe.png" alt=""></p>
 
         </div>
       </div>

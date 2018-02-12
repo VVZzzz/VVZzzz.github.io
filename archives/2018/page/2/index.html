@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="（二）将序列图进行体绘制显示"/>
+  <meta property="og:title" content="Dream it,wish it,do it!"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="http://yoursite.com"/>
   
     <link rel="alternate" href="/atom.xml" title="Dream it,wish it,do it!" type="application/atom+xml">
@@ -35,7 +35,8 @@
 </head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/wallpaper3.jpg)">
@@ -43,7 +44,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">（二）将序列图进行体绘制显示</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -104,49 +105,57 @@
   </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By Run</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2018-01-16</span>
-            <span class="time">17:24:07</span>
-          </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2018/01/13/TestB/" class="post-title">
+    TestB
+  </a>
+  <div class="date text-muted">Posted on 2018-01-13 22:53:58</div>
+</div>
 
-<a href="/categories/毕业设计-三维显示/">毕业设计:三维显示</a>
-</span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
+      
+        <div class="archive-item">
+  <a href="/2018/01/12/test-my-site/" class="post-title">
+    test_my_site
+  </a>
+  <div class="date text-muted">Posted on 2018-01-12 14:03:11</div>
+</div>
 
-<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/VTK/">#VTK</a> <a class="tag" href="/tags/MFC/">#MFC</a>
+      
+        <div class="archive-item">
+  <a href="/2018/01/12/hello-world/" class="post-title">
+    Hello World
+  </a>
+  <div class="date text-muted">Posted on 2018-01-12 13:56:50</div>
+</div>
 
+      
 
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <h1 id="将序列图进行体绘制"><a href="#将序列图进行体绘制" class="headerlink" title="将序列图进行体绘制"></a>将序列图进行体绘制</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>使用vtk中BMPreader直接读入序列图，构成一个数据体，之后直接用体绘制算法，这里我们使用光线投射算法进行显示。这个思路是我在刚接触VTK时候，直接按照<a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">&lt;<vtk图形图像进阶>&gt;</vtk图形图像进阶></a>的读取序列图例子来做的，在这个过程中卡在调整颜色传递函数和透明度传递函数卡了很久。并且发现按这种方式只能读入8位的BMP序列图进行体绘制显示，读入24位的显示是错误的，相当于将这个24位的图片分开成3份来显示。之后发现是元组默认是单元组。这是用这个方法进行显示得到的三维图像。</li>
-</ol>
-
-        </div>
-      </div>
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+              <li class="previous">
+                <a href="/archives/2018/">
+                  <span class="symbol-left">&lt;</span>
+                  <span>上一页</span>
+                </a>
+              </li>
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 

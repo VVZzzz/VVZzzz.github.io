@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="（二）将序列图进行体绘制显示"/>
+  <meta property="og:title" content="C++ primer 9.2.1-4节练习"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">（二）将序列图进行体绘制显示</p>
+          <p class="title">C++ primer 9.2.1-4节练习</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,14 +115,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-01-16</span>
+            <span class="date">2018-01-25</span>
             <span class="time">17:24:07</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/毕业设计-三维显示/">毕业设计:三维显示</a>
+<a href="/categories/C-primer/">C++ primer</a>
 </span>
           
         </div>
@@ -131,16 +131,99 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/VTK/">#VTK</a> <a class="tag" href="/tags/MFC/">#MFC</a>
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h1 id="将序列图进行体绘制"><a href="#将序列图进行体绘制" class="headerlink" title="将序列图进行体绘制"></a>将序列图进行体绘制</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>使用vtk中BMPreader直接读入序列图，构成一个数据体，之后直接用体绘制算法，这里我们使用光线投射算法进行显示。这个思路是我在刚接触VTK时候，直接按照<a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">&lt;<vtk图形图像进阶>&gt;</vtk图形图像进阶></a>的读取序列图例子来做的，在这个过程中卡在调整颜色传递函数和透明度传递函数卡了很久。并且发现按这种方式只能读入8位的BMP序列图进行体绘制显示，读入24位的显示是错误的，相当于将这个24位的图片分开成3份来显示。之后发现是元组默认是单元组。这是用这个方法进行显示得到的三维图像。</li>
-</ol>
+          <h1 id="9-2-1节练习"><a href="#9-2-1节练习" class="headerlink" title="9.2.1节练习"></a>9.2.1节练习</h1><h2 id="9-5"><a href="#9-5" class="headerlink" title="9.5"></a>9.5</h2><pre><code>using namespace std;
+
+using iter = vector&lt;int&gt;::iterator;
+
+iter f1(iter beg, iter end, int object)
+{
+    iter ptr = beg;
+    while (ptr != end)
+    {
+        if (*ptr++ == object)
+            return --ptr;
+    }
+    return ptr;
+}
+
+int main()
+{
+    vector&lt;int&gt; test;
+    int count=10;
+    while (count != 0)
+    {
+        test.push_back(count--);
+    }
+
+    auto i = test.begin();
+
+    **//返回目标的下标**
+    cout &lt;&lt; f1(i, i + 8, 5)-i &lt;&lt; endl;
+
+
+    system(&quot;pause&quot;);
+    return 0; 
+}
+</code></pre><h1 id="9-24"><a href="#9-24" class="headerlink" title="9.24"></a>9.24</h1><h2 id="9-11"><a href="#9-11" class="headerlink" title="9.11"></a>9.11</h2><p><strong>9.2.4节练习,9.11</strong></p>
+<p><strong>6种创建并初始化顺序容器的方法</strong> </p>
+<pre><code>//***********方法1 默认构造函数*************
+vector&lt;int&gt; ivec1;//默认构造函数，为空。对于array则会进行默认初始化
+array&lt;int, 5&gt; iary1;//默认初始化
+
+//***********方法2 拷贝初始化***************
+vector&lt;int&gt; ivec2(ivec1);//ivec2初始化为ivec1的拷贝
+vector&lt;int&gt; ivec3 = ivec1;
+
+//***********方法3 列表初始化***************
+//vector&lt;int&gt; ivec4{ 3.5678942164, 3.268974 };//错误：列表初始化当发生信息丢失的数据转换时会报错
+vector&lt;double&gt;    dvec1{ 1, 2, 3 };//正确：不会发生信息丢失
+vector&lt;double&gt;    dvec2 = { 1, 2, 3 };
+
+array&lt;int, 5&gt;   iary2 = {  1, 2  };//后面3个都被值初始化，即1 2 0 0 0
+array&lt;int, 5&gt;   iary3 = { { 1, 2 } };//和上一句是同理
+
+
+//array&lt;int, 5&gt;   iary4{ 1,2,3 };//可以这样直接初始化，后面的元素同样被值初始化为0，编译器也可以通过 
+//但是这样vs2013会说不能对此子对象初始值设定项省略大括号，但不影响生成
+
+//cout &lt;&lt; iary4[1] &lt;&lt; endl;
+
+//**********方法4 迭代器范围初始化*************
+vector&lt;int&gt; ivec4(dvec1.begin(), dvec1.end());//此时可以要求容器类型和元素类型都不相同，只要可以发生类型转换即可
+
+//**********方法5 只给出容器大小参数
+vector&lt;int&gt; ivec5(10);//进行值初始化
+
+//**********方法6 给出大小参数和初始值
+vector&lt;int&gt; ivec6(10, 2); 
+</code></pre><p>结果如图：<br><img src="https://i.imgur.com/uQFP6He.png" alt=""> </p>
+<p><img src="https://i.imgur.com/a5IsSir.png" alt=""></p>
+<h2 id="9-13"><a href="#9-13" class="headerlink" title="9.13"></a>9.13</h2><pre><code>//*********从list&lt;int&gt;初始化一个vecotr&lt;double&gt;**********
+list&lt;int&gt; ilist(10, 1);//定义一个10个元素为1的list
+vector&lt;double&gt; dvec(ilist.begin(), ilist.end());//用迭代器范围初始化
+
+//*********从vector&lt;int&gt;初始化vector&lt;double&gt;************
+vector&lt;int&gt; ivec(10, 1);
+vector&lt;double&gt; dvec2(ivec.begin(),ivec.end());
+
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre><h2 id="9-14"><a href="#9-14" class="headerlink" title="9.14"></a>9.14</h2><pre><code>list&lt;char *&gt; slist = { &quot;hello&quot;, &quot;world&quot;, &quot;!&quot; };
+//vector&lt;string&gt; svec = slist;//错误：初始化要求两个类型匹配
+vector&lt;string&gt; svec;
+//svec = slist;//错误：赋值需要两个类型匹配
+svec.assign(slist.begin(), slist.end());//正确：这样的赋值是对的，并且可以发生类型转换
+
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre><p>之前更多的知识可以查看我的<a href="http://write.blog.csdn.net/postlist" target="_blank" rel="noopener">CSDN博客</a>  </p>
 
         </div>
       </div>
