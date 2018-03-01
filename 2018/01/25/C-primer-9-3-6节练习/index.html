@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="All categories"/>
+  <meta property="og:title" content="C++ primer 9.3.6节练习"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">All categories</p>
+          <p class="title">C++ primer 9.3.6节练习</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,16 +115,91 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-01-14</span>
+            <span class="date">2018-01-25</span>
             <span class="time">12:51:25</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/C-primer/">C++ primer</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          
+          <h2 id="9-31节练习"><a href="#9-31节练习" class="headerlink" title="9.31节练习"></a>9.31节练习</h2><pre><code>//*****************9.3.6节 9.31练习***********************
+//******************list和forward_list的迭代器不支持+常数***************************
+list&lt;int&gt; li = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+auto liter = li.begin();
+auto lend = li.end();
+while (liter != lend)//此处注意，list和forward_list的end(),即迭代器 元素指针 引用不会失效
+{
+    if (*liter &amp; 1)//奇数，复制
+    {
+        liter = li.insert(liter, *liter);
+        ++liter;
+        ++liter;//list和forward_list不支持 liter+2这种操作
+    }
+    else//偶数，删除
+    {
+        liter = li.erase(liter);
+    }
+}
+
+for (auto i : li)
+{
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+}
+cout &lt;&lt; endl;
+
+//**********************************forward_list******************************
+
+forward_list&lt;int&gt; fli = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+//对于forward_list 一定要首前指针
+
+auto fli_pre = fli.before_begin();//首前指针
+auto fli_curr = fli.begin();//当前指针
+auto fli_end = fli.end();//尾后指针
+
+while (fli_curr != fli_end)
+{
+    if (*fli_curr &amp; 1)//如果是奇数
+    {
+        fli_curr = fli.insert_after(fli_curr, *fli_curr);
+        fli_pre = fli_curr++;
+        //相当于pre指向的是添加的元素，而curr是元素之后的
+    }
+    else
+    {
+        fli_curr = fli.erase_after(fli_pre);
+        //不用移动，因为curr指向的是删除元素的后一个
+    }
+}
+
+for (auto i : fli)
+{
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+}
+cout &lt;&lt; endl;
+
+
+
+std::system(&quot;pause&quot;);
+return 0;  
+</code></pre><p>注意，当对顺序容器添加和删除操作的时候，有些容器的迭代器，指针，引用会失效，这个时候一定要每次都调用.begin()等，而不是“一赋永逸”。 </p>
+
         </div>
       </div>
     </div>

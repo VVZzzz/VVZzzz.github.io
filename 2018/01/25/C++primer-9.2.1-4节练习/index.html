@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Run">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="C++ primer 9.2.1-4节练习"/>
+  <meta property="og:description" content="Run&#39;s Blog" />
+  <meta property="og:site_name" content="Dream it,wish it,do it!"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Dream it,wish it,do it!" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/VADER.ico">
+  
+
+  <!-- Site Title -->
+  <title>Dream it,wish it,do it!</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/wallpaper3.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">C++ primer 9.2.1-4节练习</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about/about.html">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  Categories
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/VVZzzz">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:VVZz_run@outlook.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Run</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-01-25</span>
+            <span class="time">12:51:25</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/C-primer/">C++ primer</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="9-2-1节练习"><a href="#9-2-1节练习" class="headerlink" title="9.2.1节练习"></a>9.2.1节练习</h1><h2 id="9-5"><a href="#9-5" class="headerlink" title="9.5"></a>9.5</h2><pre><code>using namespace std;
+
+using iter = vector&lt;int&gt;::iterator;
+
+iter f1(iter beg, iter end, int object)
+{
+    iter ptr = beg;
+    while (ptr != end)
+    {
+        if (*ptr++ == object)
+            return --ptr;
+    }
+    return ptr;
+}
+
+int main()
+{
+    vector&lt;int&gt; test;
+    int count=10;
+    while (count != 0)
+    {
+        test.push_back(count--);
+    }
+
+    auto i = test.begin();
+
+    **//返回目标的下标**
+    cout &lt;&lt; f1(i, i + 8, 5)-i &lt;&lt; endl;
+
+
+    system(&quot;pause&quot;);
+    return 0; 
+}
+</code></pre><h1 id="9-24"><a href="#9-24" class="headerlink" title="9.24"></a>9.24</h1><h2 id="9-11"><a href="#9-11" class="headerlink" title="9.11"></a>9.11</h2><p><strong>9.2.4节练习,9.11</strong></p>
+<p><strong>6种创建并初始化顺序容器的方法</strong> </p>
+<pre><code>//***********方法1 默认构造函数*************
+vector&lt;int&gt; ivec1;//默认构造函数，为空。对于array则会进行默认初始化
+array&lt;int, 5&gt; iary1;//默认初始化
+
+//***********方法2 拷贝初始化***************
+vector&lt;int&gt; ivec2(ivec1);//ivec2初始化为ivec1的拷贝
+vector&lt;int&gt; ivec3 = ivec1;
+
+//***********方法3 列表初始化***************
+//vector&lt;int&gt; ivec4{ 3.5678942164, 3.268974 };//错误：列表初始化当发生信息丢失的数据转换时会报错
+vector&lt;double&gt;    dvec1{ 1, 2, 3 };//正确：不会发生信息丢失
+vector&lt;double&gt;    dvec2 = { 1, 2, 3 };
+
+array&lt;int, 5&gt;   iary2 = {  1, 2  };//后面3个都被值初始化，即1 2 0 0 0
+array&lt;int, 5&gt;   iary3 = { { 1, 2 } };//和上一句是同理
+
+
+//array&lt;int, 5&gt;   iary4{ 1,2,3 };//可以这样直接初始化，后面的元素同样被值初始化为0，编译器也可以通过 
+//但是这样vs2013会说不能对此子对象初始值设定项省略大括号，但不影响生成
+
+//cout &lt;&lt; iary4[1] &lt;&lt; endl;
+
+//**********方法4 迭代器范围初始化*************
+vector&lt;int&gt; ivec4(dvec1.begin(), dvec1.end());//此时可以要求容器类型和元素类型都不相同，只要可以发生类型转换即可
+
+//**********方法5 只给出容器大小参数
+vector&lt;int&gt; ivec5(10);//进行值初始化
+
+//**********方法6 给出大小参数和初始值
+vector&lt;int&gt; ivec6(10, 2); 
+</code></pre><p>结果如图：<br><img src="https://i.imgur.com/uQFP6He.png" alt=""> </p>
+<p><img src="https://i.imgur.com/a5IsSir.png" alt=""></p>
+<h2 id="9-13"><a href="#9-13" class="headerlink" title="9.13"></a>9.13</h2><pre><code>//*********从list&lt;int&gt;初始化一个vecotr&lt;double&gt;**********
+list&lt;int&gt; ilist(10, 1);//定义一个10个元素为1的list
+vector&lt;double&gt; dvec(ilist.begin(), ilist.end());//用迭代器范围初始化
+
+//*********从vector&lt;int&gt;初始化vector&lt;double&gt;************
+vector&lt;int&gt; ivec(10, 1);
+vector&lt;double&gt; dvec2(ivec.begin(),ivec.end());
+
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre><h2 id="9-14"><a href="#9-14" class="headerlink" title="9.14"></a>9.14</h2><pre><code>list&lt;char *&gt; slist = { &quot;hello&quot;, &quot;world&quot;, &quot;!&quot; };
+//vector&lt;string&gt; svec = slist;//错误：初始化要求两个类型匹配
+vector&lt;string&gt; svec;
+//svec = slist;//错误：赋值需要两个类型匹配
+svec.assign(slist.begin(), slist.end());//正确：这样的赋值是对的，并且可以发生类型转换
+
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre><p>之前更多的知识可以查看我的<a href="http://write.blog.csdn.net/postlist" target="_blank" rel="noopener">CSDN博客</a>  </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

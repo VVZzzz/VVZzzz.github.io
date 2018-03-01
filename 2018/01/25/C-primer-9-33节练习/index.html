@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="All categories"/>
+  <meta property="og:title" content="C++ primer 9.3.3节练习"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">All categories</p>
+          <p class="title">C++ primer 9.3.3节练习</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,16 +115,68 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-01-14</span>
+            <span class="date">2018-01-25</span>
             <span class="time">12:51:25</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/C-primer/">C++ primer</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          
+          <h2 id="9-33节练习"><a href="#9-33节练习" class="headerlink" title="9.33节练习"></a>9.33节练习</h2><pre><code>//*****************9.3.3节 9.26练习***********************
+
+int ia[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 55, 89 };
+vector&lt;int&gt; ivec;
+list&lt;int&gt; ilist;
+for (auto i : ia)
+{
+    ivec.push_back(i);
+    ilist.push_back(i);
+}
+
+int l = sizeof(ia) / sizeof(int);
+auto itervec = ivec.begin();
+auto iterlist = ilist.begin();
+
+while (l--)//循环ia的元素个数次
+{
+    if (*itervec &amp; 1)
+        itervec++;
+    else
+        itervec = ivec.erase(itervec);
+
+    if (*iterlist &amp; 1)
+        iterlist = ilist.erase(iterlist);
+    else
+        iterlist++;
+}
+
+for (auto i : ivec)
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+cout &lt;&lt; endl;
+
+for (auto i : ilist)
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+cout &lt;&lt; endl;
+
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre>
         </div>
       </div>
     </div>

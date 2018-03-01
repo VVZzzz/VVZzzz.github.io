@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Run">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="All categories"/>
+  <meta property="og:title" content="C++ primer 9.3.4节练习"/>
   <meta property="og:description" content="Run&#39;s Blog" />
   <meta property="og:site_name" content="Dream it,wish it,do it!"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">All categories</p>
+          <p class="title">C++ primer 9.3.4节练习</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -115,16 +115,86 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-01-14</span>
+            <span class="date">2018-01-25</span>
             <span class="time">12:51:25</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/C-primer/">C++ primer</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/练习/">#练习</a> <a class="tag" href="/tags/顺序容器/">#顺序容器</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          
+          <h2 id="9-27练习"><a href="#9-27练习" class="headerlink" title="9.27练习"></a>9.27练习</h2><pre><code>//*****************9.3.4节 9.27练习***********************
+//******************单链表的删除***************************
+forward_list&lt;int&gt; flist = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+auto pre = flist.before_begin();//获取首前指针
+auto curr = flist.begin();//获取当前指针
+
+while (curr != flist.end())
+{
+    if (*curr &amp; 1)
+        curr = flist.erase_after(pre);//删除pre之后的元素,并返回删除元素之后的迭代器
+    else //否则pre curr就都向后移动
+    {
+        pre = curr;
+        curr++;
+    }
+}
+
+for (auto i : flist)
+    cout &lt;&lt; i &lt;&lt; endl;
+
+std::system(&quot;pause&quot;);
+return 0;  
+</code></pre><p>对于单链表来说，一定要得到他的首前迭代器。因为erase_after是要删除当前迭代器之后的元素。所以如果想删除第一个元素，就要得到首前迭代器。 insert_after也是同理。</p>
+<h2 id="9-28节练习"><a href="#9-28节练习" class="headerlink" title="9.28节练习"></a>9.28节练习</h2><pre><code>void Processlist(forward_list&lt;string&gt; &amp;sl, string &amp;str1, string &amp;str2)
+</code></pre><p><code>{</code> </p>
+<pre><code>auto pre = sl.before_begin();//首前
+auto curr = sl.begin();//当前
+bool NoObj = true;
+while (curr != sl.end())
+{
+    if (*curr == str1)
+    {
+        curr = sl.insert_after(curr, str2);
+        NoObj = false;
+    }
+    pre = curr;
+        ++curr;
+}
+
+if (NoObj)
+{
+    pre = sl.insert_after(pre, str2);
+}
+</code></pre><p><code>}</code> </p>
+<pre><code>//*****************9.3.4节 9.28练习***********************
+//******************单链表的增添改查***************************
+forward_list&lt;string&gt; slist = { &quot;ni&quot;, &quot;hao&quot;, &quot;shijie&quot;, &quot;hello&quot;, &quot;world&quot; };
+string str1 = &quot;ni&quot;,str2=&quot;NO&quot;, str3 = &quot;ADD&quot;;
+
+Processlist(slist, str2, str3);
+
+for (auto i : slist)
+    cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+cout &lt;&lt; endl;
+std::system(&quot;pause&quot;);
+return 0; 
+</code></pre>
         </div>
       </div>
     </div>

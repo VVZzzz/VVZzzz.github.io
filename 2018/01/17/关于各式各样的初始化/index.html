@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Run">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="关于各式各样的初始化"/>
+  <meta property="og:description" content="Run&#39;s Blog" />
+  <meta property="og:site_name" content="Dream it,wish it,do it!"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Dream it,wish it,do it!" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/VADER.ico">
+  
+
+  <!-- Site Title -->
+  <title>Dream it,wish it,do it!</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/wallpaper3.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">关于各式各样的初始化</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/about/about.html">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories">
+                  
+                  Categories
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/VVZzzz">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:VVZz_run@outlook.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Run</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-01-17</span>
+            <span class="time">12:51:25</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/C-primer/">C++ primer</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/初始化/">#初始化</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="关于初始化你应该知道的"><a href="#关于初始化你应该知道的" class="headerlink" title="关于初始化你应该知道的"></a>关于初始化你应该知道的</h1><h2 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h2><p>我们可以理解为当我们定义一个变量时，没有指定初值，即在这个变量后面我们不加参数，比如这样:<br><code>int i;</code><br>此时就会发生默认初始化.  </p>
+<ol>
+<li><p>如果是内置类型.  </p>
+<ul>
+<li>假如这个变量是在任何函数体之外，那么它就会被默认初始化为0。  </li>
+<li>假如这个变量是定义在函数体内部，那么它是未初始化的。也就是说它的值是未定义的，任何方式对它进行访问或者拷贝等，都是错误的行为。  </li>
+</ul>
+</li>
+<li><p>如果是类类型.<br>那么就看这个类是否允许它进行默认初始化。  </p>
+<ul>
+<li>如果这个类的默认构造函数对这个类的成员进行了初始化，那么这个变量发生默认初始化时就是正确的行为，因为他的成员都有初始值。<br><code>string str;</code><br>这个时候str就被默认初始化为空字符串，因为string类可以默认初始化。</li>
+<li>当然也有的类不支持默认初始化，这样的话它的初始值就是未定义的。<br><code>CLASSA test</code><br>此时test的成员的值是未定义的。  </li>
+</ul>
+</li>
+</ol>
+<h2 id="直接初始化"><a href="#直接初始化" class="headerlink" title="直接初始化"></a>直接初始化</h2><p>当我们定义一个变量时，后面不用等号，而是用小括号跟着参数，这样就发生了直接初始化。比如:<br><code>string hiya(&quot;nihao&quot;);</code><br><code>int i(10);</code></p>
+<ul>
+<li>实际上，是要求编译器使用普通的函数匹配来选择与提供的参数最匹配的构造函数，即此时发生了<strong>构造函数</strong>。  </li>
+</ul>
+<h2 id="拷贝初始化"><a href="#拷贝初始化" class="headerlink" title="拷贝初始化"></a>拷贝初始化</h2><p>当我们定义变量时，后面使用“= …”，此时发生了拷贝初始化。比如:<br><code>string null-book = &quot;9-999-9999&quot;;</code><br><code>string s = null-book;</code><br><code>string nines = string(10,&#39;c&#39;);</code>  </p>
+<ul>
+<li><p>实际上，此时发生了<strong>拷贝构造函数</strong>，当然这里也会有类型转换的问题，比如：<br><code>int i=30.0;</code><br>这个时候<code>30.0</code>首先会先转为<code>int</code>，之后再发生拷贝构造函数。注意第三个的例子，是首先发生了<code>构造函数</code>，之后在发生<code>拷贝构造函数</code>，<code>string (10,&#39;c&#39;);</code>是直接初始化，之后在发生拷贝初始化。  </p>
+</li>
+<li><p>注意，把<strong>拷贝构造函数</strong>和<strong>拷贝赋值运算符</strong>分清，拷贝构造函数是用来拷贝初始化的，而拷贝赋值运算符是发生在两个已定义的变量上的，比如:<br><code>int i(j);</code><br><code>i=j;</code><br>第一个是发生拷贝初始化，而第二个是拷贝赋值运算符。两个不一样。  </p>
+</li>
+</ul>
+<h2 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h2><p>这里注意，列表初始化只是初始化的一种方式，当在定义变量时，后面有小括号和花括号。<br><code>string s1(&quot;NiHao&quot;);</code><br><code>string s2(10,&#39;c&#39;);</code><br><code>vector&lt;string&gt; str{&quot;ni&quot;,&quot;hao&quot;};</code><br><code>vector&lt;string&gt; str2(10);</code><br><code>vector&lt;string&gt; str3(10,&quot;nihao&quot;);</code><br>列表初始化可以用小括号，花括号，但意思不尽相同。<br>对于第一个，s1就是<code>Nihao</code>。而s2中第一个参数是元素的个数，后面是元素，因为string可以认为是个容器。此时s2就是<code>&#39;cccccccccc&#39;</code>。  </p>
+<ul>
+<li>对于<code>str</code>，他的元素是两个，<code>&quot;ni&quot;</code>,<code>&quot;hao&quot;</code>。  </li>
+<li>对于<code>str2</code>，他的元素是10个空字符串。这里就发生了<strong>值初始化</strong>。</li>
+<li><p>对于<code>str3</code>，同理，10个<code>nihao</code>。  </p>
+</li>
+<li><p>注意，在使用列表初始化有一个特殊之处。即当因类型转换有可能会丢失信息时，编译器会报错。比如：<br><code>long double ld = 3.1415926536;</code><br><code>int a{ld},b={ld};</code>//错误：转换未执行，因为有可能丢失信息<br><code>int c(ld),d=ld;</code>//正确：转换可以执行。<br>这里注意花括号和圆括号，花括号的特殊性。  </p>
+</li>
+</ul>
+<h2 id="值初始化"><a href="#值初始化" class="headerlink" title="值初始化"></a>值初始化</h2><p>值初始化是当我们使用vector等容器时，如果我们只提供容纳元素的数量，而不给出初始值时，这个时候库会创建一个已经值初始化（即自动给一个初始值用来初始化）的元素初值，并将它赋给所有元素。</p>
+<ul>
+<li><p>如果vector的元素是内置类型，那么这个初始值自动设为0。比如：<br><code>vector&lt;int&gt; vec(10);</code>//10个元素，每个都被初始化为0  </p>
+</li>
+<li><p>如果是类类型，那么这个值初始化就是默认初始化，比如：<br><code>vector&lt;string&gt; svec(10);</code>//10个空string  </p>
+</li>
+<li><p>使用这种初始化方式有两个限制：  </p>
+<ol>
+<li>有些类明确要求要提供初始值，这种情况我们不使用初始值时，就会造成无法完成初始化的工作。  </li>
+<li>如果只提供元素数量，而没有提供元素初始值，我们只能用<code>直接初始化</code>，而不能用<code>拷贝初始化</code>。<br><code>vector&lt;int&gt; vi = 10;</code>//错误： 必须使用直接初始化  </li>
+</ol>
+</li>
+</ul>
+<h2 id="你学到了么？"><a href="#你学到了么？" class="headerlink" title="你学到了么？"></a>你学到了么？</h2><p>之前更多的知识可以查看我的<a href="http://write.blog.csdn.net/postlist" target="_blank" rel="noopener">CSDN博客</a>  </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
