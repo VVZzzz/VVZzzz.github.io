@@ -117,11 +117,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[TestB]]></title>
-    <url>%2F2018%2F01%2F13%2FTestB%2F</url>
-    <content type="text"><![CDATA[#jklsd ##jkflj ###jkljfskaljfasf]]></content>
+    <title><![CDATA[Testa]]></title>
+    <url>%2F2018%2F01%2F13%2FTestA%2F</url>
+    <content type="text"><![CDATA[jklsdjkflj###jkljfskaljfasf]]></content>
       <categories>
-        <category>Coding</category>
+        <category>Diary</category>
       </categories>
       <tags>
         <tag>TestA</tag>
@@ -129,11 +129,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Testa]]></title>
-    <url>%2F2018%2F01%2F13%2FTestA%2F</url>
-    <content type="text"><![CDATA[jklsdjkflj###jkljfskaljfasf]]></content>
+    <title><![CDATA[TestB]]></title>
+    <url>%2F2018%2F01%2F13%2FTestB%2F</url>
+    <content type="text"><![CDATA[#jklsd ##jkflj ###jkljfskaljfasf]]></content>
       <categories>
-        <category>Diary</category>
+        <category>Coding</category>
       </categories>
       <tags>
         <tag>TestA</tag>
